@@ -17,7 +17,7 @@ engine = create_engine("sqlite:///../Resources/hawaii.sqlite")
 Base = automap_base()
 
 # reflect the tables
-Base.prepare(engine, reflect=True)
+Base.prepare(engine, autoload_with=engine)
 
 # Save references to each table
 Measurement = Base.classes.measurement
@@ -125,3 +125,4 @@ def calc_temps_start_end(start_date, end_date):
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
